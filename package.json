@@ -1,0 +1,25 @@
+{
+  "name": "content_scraper",
+  "version": "1.0.0",
+  "description": "A node.js scraper for an e-commerce site",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node scraper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MASTER-PNZ/Techdegree_project6.git"
+  },
+  "keywords": [
+    "scraper",
+    "node",
+    "csv"
+  ],
+  "author": "Paul Keesling",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MASTER-PNZ/Techdegree_project6/issues"
+  },
+  "homepage": "https://github.com/MASTER-PNZ/Techdegree_project6#readme"
+}
