@@ -22,8 +22,5 @@
     "url": "https://github.com/MASTER-PNZ/Techdegree_project6/issues"
   },
   "homepage": "https://github.com/MASTER-PNZ/Techdegree_project6#readme",
-  "dependencies": {
-    "csv": "^5.0.0",
-    "scrape-it": "^5.1.0"
-  }
+  "dependencies": {}
 }
