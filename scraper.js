@@ -29,7 +29,11 @@ console.log(currentTime);
 
 // Data file conditional/creation
 
-let dataFile =
+let dataFile = './data';
+
+if (!fs.existsSync(dataFile)){
+  fs.mkdirSync(dataFile);
+}
 
 // Requesting Data and arraging html elements
 
