@@ -30,16 +30,16 @@ console.log(formatToday);
 // Function to display scraped info
 
 // Function to create csv file
-const json2csv = require('json2csv').parse;
-const fields = ['field1', 'field2', 'field3'];
-const opts = { fields };
-
-try {
-  const csv = json2csv(myData, opts);
-  console.log(csv);
-} catch (err) {
-  console.error(err);
-}
+// const json2csv = require('json2csv').parse;
+// const fields = ['field1', 'field2', 'field3'];
+// const opts = { fields };
+//
+// try {
+//   const csv = json2csv(myData, opts);
+//   console.log(csv);
+// } catch (err) {
+//   console.error(err);
+// }
 // Error Log handler
 
 //
