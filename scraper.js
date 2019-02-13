@@ -6,6 +6,7 @@ const json2csv = require('json2csv');
 
 // Website Entry url
 url = "http://shirts4mike.com/";
+
 // Date Format Programming
 const date = new Date();
 let year = date.getFullYear();
@@ -15,15 +16,20 @@ let day = date.getDate();
 if (month < 10) {
   month = `0${month}`;
 }
-
 if (day < 10) {
   day = `0${day}`;
 }
 
-let formatToday = `${year}-${month}-${day}`;
-console.log(formatToday);
+let csvToday = `${year}-${month}-${day}`;
+let currentTime = date.toLocaleTimeString();
+console.log(date);
+console.log(csvToday);
+console.log(currentTime);
+
 
 // Data file conditional/creation
+
+let dataFile =
 
 // Requesting Data and arraging html elements
 
