@@ -27,7 +27,6 @@ console.log(date);
 console.log(csvToday);
 console.log(currentTime);
 
-
 // Data file conditional/creation
 
 let dataFolder = './data';
@@ -38,34 +37,49 @@ try {
   fs.mkdirSync(dataFolder);
 }
 
-// Requesting Data and arraging html elements
+let shirtData = [];
+
+// Requesting Data from main Website
 rp(urlMain)
-    .then(function (htmlString) {
-        // Process html...
+  .then(function (html) {
+    const $ = cheerio.load(html);
+    // With Cheerio locating the shirts page navigation link
+    const shirtsPage = $("a[href*='shirts.php']");
+
+    rp(shirtsPage)
+      .then(function (html){
+        const $ = cheerio.load(html);
+        const products = $(.products li a);
+        products.each( (index, elem => {
+          let shirtURL = $(elem).attr('href');
+
+          rp(shirtURL)
+          // Function to display scraped info
+
+          // Function to create csv file
+          const json2csv = require('json2csv').parse;
+          const fields = ['Title', 'Price', 'ImageURL', 'URL', 'Time'];
+          const opts = { fields };
+
+          try {
+            const csv = json2csv(shirtData, opts);
+            fs.writeFile(`./data/${csvToday}.csv`, csv, (err) => {
+
+
+              console.log("Website Sucessfully Crawled!");
+            });
+          } catch (err) {
+            console.error(err);
+          }
+
+
     })
-    .catch(function (err) {
-        // Crawling failed...
-    });
-
-// Function to display scraped info
-
-// Function to create csv file
-const json2csv = require('json2csv').parse;
-const fields = ['Title', 'Price', 'ImageURL', 'URL', 'Time'];
-const opts = { fields };
-
-try {
-  const csv = json2csv(shritvariable, opts);
-  fs.writeFile(`./data/${csvToday}.csv`, csv, (err) => {
-
-
-    console.log("Website Sucessfully Crawled!");
-  });
-} catch (err) {
-  console.error(err);
-}
-// Error Log handler
-fs.appendFile("scraper-error.log", `[${date}] ${error}\n`, (error) => {
-  if (error) {
-    throw error;
-  }
+  })
+})
+  .catch(function (err) {
+  // Error Log handler
+    fs.appendFile("scraper-error.log", `[${date}] ${error}\n`, (error) => {
+      if (error) {
+        throw error;
+      }
+});
